@@ -14,36 +14,44 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Flutter")),
-      body: Container(
-        height: 100,
-        color: Colors.blueGrey,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: Center(
+        child: Container(
+          height: 100,
+          width: 100,
+          color: Colors.blueGrey,
+        ),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: const EdgeInsets.all(0),
           children: <Widget>[
-            Container(
-              padding: const EdgeInsets.all(8),
-              width: 100,
-              height: 100,
-              alignment: Alignment.center,
-              color: Colors.orange,
+            UserAccountsDrawerHeader(
+              accountEmail: Text("user@flutter.com"),
+              accountName: Text("Flutter"),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: NetworkImage(
+                  "https://upload.wikimedia.org/wikipedia/en/thumb/c/cb/Robert_Downey_Jr._as_Iron_Man_in_Avengers_Infinity_War.jpg/220px-Robert_Downey_Jr._as_Iron_Man_in_Avengers_Infinity_War.jpg"
+                ),
+              ),
             ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              width: 100,
-              height: 100,
-              alignment: Alignment.center,
-              color: Colors.yellow,
+            ListTile(
+              leading: Icon(Icons.person_outline),
+              title: Text("Data"),
+              subtitle: Text("Subdata"),
+              trailing: Icon(Icons.edit),
             ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              width: 100,
-              height: 100,
-              alignment: Alignment.center,
-              color: Colors.greenAccent,
+            ListTile(
+              leading: Icon(Icons.alternate_email),
+              title: Text("Email"),
+              subtitle: Text("data@subdata.com"),
+              trailing: Icon(Icons.edit),
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add_alert),
       ),
     );
   }
