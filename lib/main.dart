@@ -9,16 +9,56 @@ void main() {
   ));
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+
+  var myText = "Change Name";
+  TextEditingController _nameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Flutter")),
+      backgroundColor: Colors.grey[200],
+      appBar: AppBar(
+        title: Text("Flutter"),
+      ),
       body: Center(
-        child: Container(
-          height: 100,
-          width: 100,
-          color: Colors.blueGrey,
+        child: Padding(
+          padding: const EdgeInsets.all(18.0),
+          child: SingleChildScrollView(
+            child: Card(
+              child: Column(
+                children: <Widget>[
+                  Image.asset(
+                    "assets/abc.jpg",
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    myText,
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: TextField(
+                      controller: _nameController,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: "Enter your name",
+                        labelText: "Name",
+                        icon: Icon(Icons.person_add),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
       drawer: Drawer(
@@ -30,8 +70,7 @@ class HomePage extends StatelessWidget {
               accountName: Text("Flutter"),
               currentAccountPicture: CircleAvatar(
                 backgroundImage: NetworkImage(
-                  "https://upload.wikimedia.org/wikipedia/en/thumb/c/cb/Robert_Downey_Jr._as_Iron_Man_in_Avengers_Infinity_War.jpg/220px-Robert_Downey_Jr._as_Iron_Man_in_Avengers_Infinity_War.jpg"
-                ),
+                    "https://upload.wikimedia.org/wikipedia/en/thumb/c/cb/Robert_Downey_Jr._as_Iron_Man_in_Avengers_Infinity_War.jpg/220px-Robert_Downey_Jr._as_Iron_Man_in_Avengers_Infinity_War.jpg"),
               ),
             ),
             ListTile(
@@ -50,8 +89,11 @@ class HomePage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.add_alert),
+        onPressed: () {
+          myText = _nameController.text;
+          setState(() {});
+        },
+        child: Icon(Icons.sentiment_very_satisfied),
       ),
     );
   }
