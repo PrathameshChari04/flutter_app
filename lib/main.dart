@@ -15,7 +15,35 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text("Flutter")),
       body: Container(
-        child: Text("Body Content"),
+        height: 100,
+        color: Colors.blueGrey,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Container(
+              padding: const EdgeInsets.all(8),
+              width: 100,
+              height: 100,
+              alignment: Alignment.center,
+              color: Colors.orange,
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              width: 100,
+              height: 100,
+              alignment: Alignment.center,
+              color: Colors.yellow,
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              width: 100,
+              height: 100,
+              alignment: Alignment.center,
+              color: Colors.greenAccent,
+            ),
+          ],
+        ),
       ),
     );
   }
