@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Pages/login_page.dart';
 import 'package:flutter_app/drawer.dart';
+import 'package:flutter_app/utils/constants.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import '../name_card_widget.dart';
 
 class HomePage extends StatefulWidget {
+
+  static const String routeName = "/homepage";
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -41,6 +45,16 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         title: Text("Flutter"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.exit_to_app),
+            onPressed: () {
+              Constants.pref.setBool("loggedIn", false);
+
+              Navigator.pushReplacementNamed(context, LoginPage.routeName);
+            },
+          )
+        ],
       ),
       body: data != null
           ? ListView.builder(
