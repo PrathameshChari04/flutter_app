@@ -4,6 +4,7 @@ import 'package:flutter_app/utils/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Pages/home_page.dart';
+import 'Pages/home_pageFB.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home:
-          Constants.pref.getBool("loggedIn") == true ? HomePage() : LoginPage(),
+          Constants.pref.getBool("loggedIn") == true ? HomePageFB() : LoginPage(),
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
